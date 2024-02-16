@@ -1,5 +1,6 @@
 package com.websocket.demo.chat;
 
+import com.websocket.demo.config.WebSocketEventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -18,6 +19,8 @@ public class chatController {
     @SendTo("/topic/public")
     public ChatMessage addUser(ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        ChatMessage.Count(1);
+        chatMessage.setEx();
         return chatMessage;
     }
 }
