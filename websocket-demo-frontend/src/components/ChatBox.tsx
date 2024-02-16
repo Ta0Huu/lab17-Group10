@@ -8,7 +8,6 @@ import {
   messageType,
 } from "../store/Slices/webSocketSlice.ts";
 import JoinLeaveMessage from "./joinLeaveMessage.tsx";
-
 export default function ChatBox() {
   const { sendMessage } = useWebSocket();
   const [typedMessage, setTypedMessage] = useState<string>("");
@@ -34,7 +33,6 @@ export default function ChatBox() {
             Online persons : <strong>{count}</strong>
           </p>
         </div>
-
         <div className="overflow-y-auto max-h-96">
           {webSocketState.messages?.map((message, index) => {
             return message.type === messageType.JOIN ||
@@ -76,8 +74,7 @@ export default function ChatBox() {
             />
             <button
               className="ml-2 bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-              type="submit"
-            >
+              type="submit">
               Send
             </button>
           </form>

@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store.ts";
 import Stomp from "stompjs";
-
 export enum messageType {
   CHAT = "CHAT",
   JOIN = "JOIN",
@@ -25,7 +24,6 @@ const initialState: webSocketState = {
   stompClient: undefined,
   messages: [],
 };
-
 export const webSocketSlice = createSlice({
   name: "webSocket",
   initialState,
@@ -41,7 +39,6 @@ export const webSocketSlice = createSlice({
     },
   },
 });
-
 export const { setIsConnected, appendMessage, setStompClient } =
   webSocketSlice.actions;
 export default webSocketSlice.reducer;
